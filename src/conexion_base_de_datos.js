@@ -11,13 +11,13 @@ const pool = mysql.createPool({
     ssl: {
         rejectUnauthorized: false
     },
-    port: process.env.PORT_db
+    port: process.env.port_db || 680
 });
 
 // Extablecer la nonexion a la base de datos
 pool.getConnection( (err, con) => {
     if ( err ){
-        console.log('No se puedo conectar a la base de datos');
+        return console.log('No se puedo conectar a la base de datos', err);
     };
 
     console.log('Conectado correctamente a Railway');
